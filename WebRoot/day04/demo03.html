@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>jQuery文档操作</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<style type="text/css">
+		.even1 {background-color: blue;}
+	</style>
+	<script type="text/javascript" src="script/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var input = $("form:eq(0) input");
+			
+			$("form:eq(0)").submit(function(){
+				return false;
+			});
+			
+			input.eq(2).click(function(){
+				
+				var row = Number(input.eq(0).val());
+				var col = Number(input.eq(1).val());
+				
+				$("body table").remove();
+				
+				var table = $("<table></table>").appendTo("body");
+				//table.attr("width","100%").attr("border",1);//设置
+				//table.attr("width");//获取
+				table.attr({"width":"100%","border":"1"});
+				for(var i=0;i<row;i++){
+					var tr = $("<tr></tr>").appendTo(table);
+					for(var j=0;j<col;j++){
+						$("<td></td>").appendTo(tr).html(i+":"+j);
+					}
+				}
+			});
+			
+			input.eq(3).click(function(){
+				var table = $("table");
+				if(table.size()==0){
+					alert("请先创建");
+					return ;
+				}
+				
+				var tr = table.find("tr:last");
+				var newTr = tr.clone();
+				tr.after(newTr);
+				
+			});
+			
+			input.eq(4).click(function(){
+				var table = $("table");
+				if(table.size()==0){
+					alert("请先创建");
+					return ;
+				}
+				
+				var tr = table.find("tr");
+				tr.append("<td width=\"100\">新增列</td>");
+				
+			});
+			
+			input.eq(5).click(function(){
+				var table = $("table");
+				if(table.size()==0){
+					alert("请先创建");
+					return ;
+				}
+				var tr = table.find("tr:even");
+				//tr.toggleClass("even1");
+				
+				//tr.css("background-color","blue");//设置CSS属性
+				//tr.css("background-color");//获取CSS属性
+				tr.css({"background-color":"blue","color":"#FFF"});
+			});
+			
+		});
+	</script>
+  </head>
+  
+  <body>
+<form action="">
+	行：<input name="row" value="5"/> 列：<input name="col" value="4"/> <input type="submit" value="创建表格" /> <input  type="submit" value="新增一行" /> <input  type="submit" value="新增一列" /><input type="submit" value="偶数行着色" />
+</form>
+  </body>
+</html>

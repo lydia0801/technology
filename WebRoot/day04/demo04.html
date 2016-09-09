@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>jQuery的选择器</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<style type="text/css">
+		#menu , #menu ul { list-style: none; margin: 0; padding: 0;}
+		#menu { border: #006 solid 1px; width: 200px; padding: 1px;}
+		#menu div { background-color: #006; text-align: center; color: #FFF; font-size: 18px; font-weight: bold; line-height: 35px; margin-bottom: 1px;}
+		#menu div:hover { background-color: #F60; cursor: pointer;}
+		#menu ul li { text-align: center; font-size: 14px; border-bottom: #CCC dotted 1px; line-height: 26px;}
+
+	</style>
+	<script type="text/javascript" src="script/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript">
+
+		
+		$(function(){
+			var menu = $("#menu");
+			menu.find("ul:not(:first)").hide();
+			menu.find("div").click(function(){
+				var the = $(this);
+				var ul = the.next();
+				if(ul.is(":hidden")){
+					menu.find("ul:visible").slideUp(5000);
+					ul.slideDown(5000);
+				}
+			
+			});
+			
+		});
+		
+	</script>
+  </head>
+  
+  <body>
+
+<ul id="menu">
+	<li>
+    	<div>菜单一</div>
+    	<ul>
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+	<li>
+    	<div>菜单二</div>
+    	<ul>
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+	<li>
+    	<div>菜单三</div>
+    	<ul>
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+</ul>
+  </body>
+</html>

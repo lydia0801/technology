@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript">
+function getNowTime(){
+	var date = new Date();
+	var timeString = "";
+	timeString += date.getFullYear();
+	timeString += "年";
+	timeString += (date.getMonth()+1);
+	timeString += "月";
+	timeString += date.getDate();
+	timeString += "日 星期";
+	var weeks = ["日","一","二","三","四","五","六"];
+	timeString += weeks[date.getDay()];
+	timeString += " ";
+	timeString += date.getHours();
+	timeString += "时";
+	timeString += date.getMinutes();
+	timeString += "分";
+	timeString += date.getSeconds();
+	timeString += "秒";
+	
+	return timeString;
+}
+</script>
+</head>
+
+<body>
+<div id="timerShow"></div>
+<script language="javascript">
+function asdf(){
+	document.getElementById("timerShow").innerHTML = getNowTime();
+}
+asdf();
+
+window.setInterval(asdf,1000);
+</script>
+
+</body>
+</html>

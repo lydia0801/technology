@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>多媒体资源管理系统</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<script type="text/javascript" src="resources/script/jquery-1.8.0.min.js"></script>
+	<!-- 第一步：引入jQuery核心库 -->
+	<script type="text/javascript" src="resources/jquery-easyui-1.3.2/jquery.easyui.min.js"></script>
+	<!-- 第二步：引入EasyUI核心库 -->
+	<script type="text/javascript" src="resources/jquery-easyui-1.3.2/locale/easyui-lang-zh_CN.js"></script>
+	<!-- 第三步：引入EasyUI语言环境包 -->
+	
+	<link rel="stylesheet" type="text/css" href="resources/jquery-easyui-1.3.2/themes/metro/easyui.css" />
+	<!-- 第四步：引入EasyUI皮肤 -->
+	<link rel="stylesheet" type="text/css" href="resources/jquery-easyui-1.3.2/themes/icon.css" />
+	<!-- 第五步：引入EasyUI图标 -->
+	
+	<link rel="stylesheet" type="text/css" href="resources/style/main.css" />
+	<script type="text/javascript" src="resources/script/public.js"></script>
+  </head>
+  
+  <body>
+  
+ <div id="main" data-options="fit:true">  
+    <div data-options="region:'north',title:'',split:false,border:false,href:'top.html'" style="height:112px;">
+    </div>  
+    <div data-options="region:'west',title:'主菜单',split:true" style="width:150px;"></div>  
+    <div data-options="region:'center',title:'',border:false,href:'welcome.html'" style="padding:5px; padding-left:0;background:#eee;"></div>  
+</div>  
+<script type="text/javascript">
+$(function(){
+	window.sys = {};
+	
+	$.post(
+		"session.action",
+		{},
+		function(data){
+			if(data.user==null){
+				//window.location = "./";
+				window.user = {userRolesId:1};
+				window.init();
+			}else{
+				window.user = data.user;
+				window.init();
+			}
+		},"json"
+	);
+	
+	window.init = function(){
+		var mainObj = $("#main").layout();
+		sys.top = mainObj.layout("panel","north");
+		sys.menu = mainObj.layout("panel","west");
+		sys.main = mainObj.layout("panel","center");
+		sys.win = null;
+		
+		//console.info(user);
+		sys.menu.panel("refresh","menu"+user.userRolesId+".html");
+		
+		
+		sys.open = function(arg){
+			sys.win = $("<div></div>").appendTo("body");
+			var arg1 = $.extend({
+				modal:true,
+				onClose:function(){
+					sys.win.dialog("destroy");
+				}
+			},arg);
+			sys.win.dialog(arg1);
+		}
+		
+		$.fn.main = function(){
+			$(this).click(function(){
+				sys.main.panel("refresh",$(this).attr("href"));
+				return false;
+			});
+			return this;
+		}
+		
+		$.fn.open = function(arg){
+			$(this).click(function(){
+				var arg1 = $.extend({href:$(this).attr("href"),title:$(this).attr("win-title"),width:$(this).attr("win-w"),height:$(this).attr("win-h")},arg);
+				sys.open(arg1);
+				return false;
+			});
+			return this;
+		}
+	}
+});
+</script>  
+  </body>
+</html>

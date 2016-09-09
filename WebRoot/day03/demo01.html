@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>javascript</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript">
+		//alert("cccccc");
+	</script>
+	<script type="text/javascript" src="script/demo01.js"></script>
+  </head>
+  
+  <body>
+  	<input type="button" value="啊啊啊啊" onclick="alert('aaaa');" />
+  	<a href="javascript:alert('bbbbb');" >跳转到昨天的</a>
+  	
+	<script type="text/javascript">
+	/**
+		//alert("ddddd");
+		
+		**/
+		var arr = "10,5".split(",");
+		var i = Number("10");
+		var s = String(10);
+		var b = Boolean("true");
+		alert(arr[0]+arr[1]);
+		alert(arr[0]-arr[1]);
+		
+		/**
+		方法的声明
+		**/
+		function funcationName(a,b){
+			return a+b;
+		}
+		
+		var func1 = function(a,b){
+			return a-b;
+		}
+		
+		/**
+		方法的调用
+		**/
+		var i = funcationName(1,2);
+		var j = func1(1,2)
+		alert(i+":"+j);
+		
+		/**
+			匿名函数的调用
+		**/
+		(function(a,b){
+			alert(a+b);
+		})(1,2);
+		
+	</script>
+  </body>
+</html>

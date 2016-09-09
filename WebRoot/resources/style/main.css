@@ -1,0 +1,11 @@
+.main_menu a { margin-top: 2px;}
+.top { height: 112px; background: url("../images/top_bg.png") scroll repeat-x 0 0;}
+.top .logo { height: 112px; background: url("../images/top_logo.png") scroll no-repeat 25px 22px;}
+.top .right { height: 112px; background: url("../images/top_right.png") scroll no-repeat right top;}
+.top .menu { background-color: transparent; border: none; width: 320px; color:#666; text-align: center; position: absolute; top:49px; right:5px;}
+.top .info,.top .time { color:#81ADD1; position: absolute; width: 50%; line-height: 33px; font-size: 12px; top:79px}
+.top .info {left:5px;}
+.top .time {right:5px; text-align: right;}
+
+a { color: #333; text-decoration: none;}
+a:hover { color: red; text-decoration:  underline;}

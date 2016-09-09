@@ -1,0 +1,48 @@
+<form method="post">
+<table style="margin:10px auto;" width="300" border="0" cellspacing="5" cellpadding="0">
+  <tr>
+    <td colspan="2" align="center" style="font-size: 24px;">用户注册</td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">用户名：</td>
+    <td><input class="easyui-validatebox combo" validType="regx['^\\w{2,20}$']" data-options="required:true" type="text" name="userName" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">密码：</td>
+    <td><input id="userPwd_sdfdf" class="easyui-validatebox combo" data-options="required:true,validType:'length[2,20]'" type="password" name="userPwd" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">密码确认：</td>
+    <td><input class="easyui-validatebox combo" validType="equals['#userPwd_sdfdf']" data-options="required:true"  type="password" style=" width:100px;padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">真实姓名：</td>
+    <td><input class="easyui-validatebox combo" data-options="required:true,validType:'length[2,10]'" type="text" name="userRealName" style=" width:100px; padding:2px;"/></td>
+  </tr>
+</table>
+</form>
+<script language="javascript">
+$(function(){
+	var form = sys.win.find("form");
+	form.form({
+		url:"reg.action",
+		onSubmit:function(){
+			console.info(form.serialize());
+			console.info(form.serializeArray());
+			console.info(form.serializeObject());
+			return form.form("validate");
+		},
+		success:function(data){
+
+			var data = eval("("+data+")");
+			if(data.ok){
+				$.messager.alert("错误提示","注册成功","info");
+				sys.win.dialog("close");
+			}else{
+				$.messager.alert("错误提示","注册失败<br/>因为："+data.msg,"error");
+			}
+
+		}
+	});
+});
+</script>

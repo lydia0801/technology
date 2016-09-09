@@ -1,0 +1,62 @@
+<form action="reg.jsp" method="post">
+<table style="margin:0px auto;" width="300" border="0" cellspacing="5" cellpadding="0">
+  <tr>
+    <td colspan="2" align="center">用户注册</td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">用户名：</td>
+    <td><input class="easyui-validatebox combo" data-options="required:true,validType:'length[2,20]'" type="text" name="userName" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">密码：</td>
+    <td><input id="userPwd_sdfdf" class="easyui-validatebox combo" data-options="required:true,validType:'length[2,20]'" type="password" name="userPwd" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">密码确认：</td>
+    <td><input class="easyui-validatebox combo" validType="equals['#userPwd_sdfdf']" data-options="required:true"  type="password" name="userPWDConfirm" style=" width:100px;padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">性别：</td>
+    <td><input type="radio" name="sex" checked="checked"/>男 <input name="sex" type="radio" />女 </td>
+  </tr>
+  <tr>
+    <td align="right">所在城市：</td>
+    <td><select class="easyui-combobox" name="city">
+    	<option value="1">长沙</option>
+    	<option value="2">上海</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td align="right">生日：</td>
+    <td><input class="easyui-datebox" type="text" name="userBirthday" style=" width:120px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">级别：</td>
+    <td><input class="easyui-numberspinner"  data-options="min:1,max:10,editable:false" value="5" type="text" name="userBirthday" style=" width:60px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td><input type="submit" value="注册" class="button"/></td>
+  </tr>
+</table>
+</form>
+<script language="javascript">
+$(function(){
+	var form = sys.win.find("form");
+	form.form({
+		url:"reg.jsp",
+		onSubmit:function(){
+			return form.form("validate");
+		},
+		success:function(data){
+			var data = eval("("+data+")");
+			if(data.ok){
+				$.messager.alert("错误提示","注册成功","info");
+				sys.win.dialog("close");
+			}else{
+				$.messager.alert("错误提示","注册失败","error");
+			}
+		}
+	});
+});
+</script>

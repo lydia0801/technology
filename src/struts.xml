@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.multipart.maxSize" value="999999999999" />
+	
+	<package name="root" namespace="/" extends="json-default">
+		
+		<global-results>
+		
+			<result name="json" type="json"></result>
+			
+			<result name="download" type="stream">
+				<param name="allowCaching">true</param>
+				<param name="bufferSize">1024</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentLength">${size}</param>
+				<param name="contentType">${contentType}</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+			</result>
+			
+		</global-results>
+		
+		<action name="hello" class="com.icss.actions.HelloAction" method="execute">
+		
+		</action>
+		
+		<action name="login" class="com.icss.actions.LoginAction">
+		
+		</action>
+		 
+		<action name="reg" class="com.icss.actions.RegAction">
+		<!-- 
+			<result name="abc" type="json"></result>
+			<result name="abc1">/sadf.jsp</result>
+			<result name="abc3">/asdfdfd.jsp</result>
+		 -->
+		</action>
+		<action name="fileLevel" class="com.icss.actions.FileLevelAction"></action>
+		<action name="session" class="com.icss.actions.SessionAction"></action>
+		<action name="logout" class="com.icss.actions.LogoutAction"></action>
+		<action name="userPage" class="com.icss.actions.UserPageAction"></action>
+		<action name="userRoles" class="com.icss.actions.UserRolesAction"></action>
+		<action name="userShow" class="com.icss.actions.UserShowAction"></action>
+		<action name="upload" class="com.icss.actions.UploadAction"></action>
+		<action name="download" class="com.icss.actions.DownloadAction"></action>
+	</package>
+
+</struts>    

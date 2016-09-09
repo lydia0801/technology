@@ -1,0 +1,25 @@
+<div class="easyui-accordion main_menu" data-options="fit:true,border:false">  
+    <div class="_classes" data-options="title:'公共资源'" style="text-align: center;"></div>
+    <div data-options="title:'个人中心'" style="text-align: center;">  
+		<a class="easyui-linkbutton" data-options="plain:true" href="file/upload.html">我要上传</a><br/>
+		<a class="easyui-linkbutton" data-options="plain:true" href="#">我的上传历史</a><br/>
+		<a class="easyui-linkbutton" data-options="plain:true" href="#">修改登录密码</a><br/>
+		<a class="easyui-linkbutton" data-options="plain:true" href="#">修改个人资料</a>
+    </div>
+    <div data-options="title:'统计与报表'" style="text-align: center;">  
+		<a class="easyui-linkbutton" data-options="plain:true" href="user/list.html">用户与权限</a><br/>
+		<a class="easyui-linkbutton" data-options="plain:true" href="user/list.html">目录管理</a><br/>
+    </div>
+    <div data-options="title:'系统管理中心'" style="text-align: center;">  
+		<a class="easyui-linkbutton" data-options="plain:true" href="user/list.html">用户与权限</a><br/>
+		<a class="easyui-linkbutton" data-options="plain:true" href="user/list.html">目录管理</a><br/>
+    </div>
+</div>
+<script language="javascript">
+$(function(){
+	sys.menu.find("a").main();
+	sys.menu.find("a").click(function(){
+		sys.obj = $(this);
+	});
+});
+</script>

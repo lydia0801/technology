@@ -1,0 +1,11 @@
+<div class="easyui-panel" data-options="title:'视频资源',fit:true">
+	<a id="aslkdjfksldafj" class="easyui-linkbutton" data-options="plain:false" href="../day05/load2.html">我要上传</a>
+</div>
+<script language="javascript">
+$(function(){
+	$("#aslkdjfksldafj").click(function(){
+		sys.main.panel("refresh",$(this).attr("href"));
+		return false;
+	});
+});
+</script>

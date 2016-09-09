@@ -1,0 +1,19 @@
+li { font-size:36px;}/** color:yellow;**/
+.bg_div { 
+/**	
+background-color:#CCC;
+background-image:url(../images/01.gif);
+background-repeat:no-repeat;
+background-attachment:scroll;
+background-position:10px 100px;**/
+	background: #CCC url(../images/01.gif) no-repeat scroll 10px 100px;
+}
+
+p { font-size: 14px; line-height: 1.5;
+text-indent:38px; text-decoration: none;/** underline overline line-through;**/
+letter-spacing: 5px;
+}
+p:hover { color:red;}
+
+a { text-decoration: none; color: #666;}
+a:hover { color: #000;}

@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>jQuery的选择器</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<style type="text/css">
+		#menu , #menu ul { list-style: none; margin: 0; padding: 0;}
+		#menu { border: #006 solid 1px; width: 200px; padding: 1px;}
+		#menu div { background-color: #006; text-align: center; color: #FFF; font-size: 18px; font-weight: bold; line-height: 35px; margin-bottom: 1px;}
+		#menu div:hover { background-color: #F60; cursor: pointer;}
+		#menu ul li { text-align: center; font-size: 14px; border-bottom: #CCC dotted 1px; line-height: 26px;}
+		.s { display: block;}
+		.h { display: none;}
+	</style>
+	<script type="text/javascript" src="script/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			
+			
+			
+		});
+		
+		
+		$(function(){
+			/**
+			var menu = $("#menu");
+			
+			console.info(menu);
+			
+			var div = $("div");
+			
+			console.info(div);
+			
+			var ul = $(".s");
+			console.info(ul);
+			
+			var a = $("*");
+			console.info(a);
+			
+			var e = document.getElementById("menu");
+			var ej = $(e);
+			console.info(e);
+			console.info(ej);
+			console.info(ej[0]);
+			console.info(ej.get(0));
+			
+			var j1 = $("#menu,.s");
+			console.info(j1);
+			
+			var j2 = $("ul.s");
+			console.info(j2);
+			
+			console.info("-------------j3");
+			var j3 = $("#menu li");
+			j3 = $("#menu").find("li");
+			console.info(j3);
+			
+			
+			console.info("-------------j4");
+			var j4 = $("#menu > li");
+			j4 = $("#menu").children("li");
+			console.info(j4);
+		
+		
+			console.info("-------------j5");
+			var j5 = $("table > tbody > tr"); 
+			j5 = $("table").children("tbody").children("tr");
+			console.info(j5);
+			
+			
+			console.info("-------------j6");
+			var j6 = $("div:first");
+			j6 = $("div").first();
+			console.info(j6);
+			
+			
+			console.info("-------------j7");
+			var j7 = $("div:eq(1)");
+			j7 = $("div").eq(1);
+			console.info(j7);
+			
+			
+			console.info("-------------j8");
+			var j8 = $("div:not(:eq(1))");
+			j8 = $("div").not(":eq(1)");
+			console.info(j8);
+			
+			console.info("-------------j9");
+			var j9 = $("ul:hidden").show();
+			console.info(j9);
+			
+			
+			console.info("-------------j10");
+			var j10 = $("input[type]");
+			console.info(j10);
+			
+			
+			console.info("-------------j11");
+			var j11 = $("input[type=submit]");
+			console.info(j11);
+			
+			
+			
+			console.info("-------------j11");
+			var j11 = $("input[type!=submit]");
+			console.info(j11);
+			
+			console.info("-------------j11");
+			var j11 = $("input[type^=sub]");
+			console.info(j11);
+			
+			
+			console.info("-------------j11");
+			var j11 = $("input[type$=d]");
+			console.info(j11);
+			
+			
+			
+			console.info("-------------j11");
+			var j11 = $("input[type*=u]");
+			console.info(j11);
+			
+			**/
+			var isObj = $("ul:not(#menu)");
+			console.info(isObj);
+			var is1 = isObj.is(".h");
+			console.info(is1);
+			
+			var title = $("div:first");
+			var next = title.next();
+			var parent = title.parent();
+			var parents = title.parents("#menu");
+			console.info(title);
+			console.info(next);
+			console.info(parent);
+			console.info(parents);
+			
+		});
+		
+	</script>
+  </head>
+  
+  <body>
+  <table>
+  	<tr>
+  		<td></td>
+  	</tr>
+  </table>
+  
+  <input name="aaa" disabled="disabled" />
+  <input type="password" name="bbb" />
+  <input type="submit" name="ccc" />
+<ul id="menu">
+	<li>
+    	<div class="s">菜单一</div>
+    	<ul class="s">
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+	<li>
+    	<div>菜单二</div>
+    	<ul class="s">
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+	<li>
+    	<div>菜单三</div>
+    	<ul class="h">
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+</ul>
+  </body>
+</html>

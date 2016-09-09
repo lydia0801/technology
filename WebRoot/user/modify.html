@@ -1,0 +1,80 @@
+<form method="post">
+<input type="hidden" name="userId"/>
+<table style="margin:10px auto;" width="300" border="0" cellspacing="5" cellpadding="0">
+  <tr>
+    <td width="40%" align="right">用户名：</td>
+    <td><input class="easyui-validatebox combo" validType="regx['^\\w{2,20}$']" data-options="required:true" type="text" name="userName" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">新密码：</td>
+    <td><input id="userPwd_sdfdf" class="easyui-validatebox combo" data-options="required:false,validType:'length[2,20]'" type="password" name="userPwd" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td align="right">新密码确认：</td>
+    <td><input class="easyui-validatebox combo" validType="equals['#userPwd_sdfdf']" data-options="required:false"  type="password" style=" width:100px;padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">真实姓名：</td>
+    <td><input class="easyui-validatebox combo" data-options="required:true,validType:'length[2,10]'" type="text" name="userRealName" style=" width:100px; padding:2px;"/></td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">用户角色：</td>
+    <td>
+    <select class="easyui-combobox" name="userRolesId"  
+    data-options="required:true,valueField:'userRolesId',width:100,textField:'userRolesName',url:'userRoles.action'"></select>
+    </td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">访问密级：</td>
+    <td>
+    <select class="easyui-combobox" name="fileLevelId"  
+    data-options="required:true,valueField:'fileLevelId',width:100,textField:'fileLevelName',url:'fileLevel.action'"></select>
+    </td>
+  </tr>
+  <tr>
+    <td width="40%" align="right">用户状态：</td>
+    <td>
+   	<input name="userState" value="true" type="radio" />正常
+   	<input name="userState" value="false" type="radio" />锁定
+    </td>
+  </tr>
+</table>
+</form>
+<script language="javascript">
+$(function(){
+	var form = sys.win.find("form");
+	//$.parser.parse(form);
+	form.form({
+		url:"reg.action",
+		onSubmit:function(){
+			console.info(form.serialize());
+			console.info(form.serializeArray());
+			console.info(form.serializeObject());
+			return form.form("validate");
+		},
+		success:function(data){
+
+
+
+
+			var data = eval("("+data+")");
+			if(data.ok){
+				$.messager.alert("错误提示","注册成功","info");
+				sys.win.dialog("close");
+			}else{
+				$.messager.alert("错误提示","注册失败<br/>因为："+data.msg,"error");
+			}
+
+		}
+	});
+	
+	$.post(
+		"userShow.action",
+		{"id":sys.id},
+		function(data){
+			data.userPwd="";
+			form.form("load",data);
+		},"json"
+	);
+});
+</script>

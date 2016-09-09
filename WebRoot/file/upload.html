@@ -1,0 +1,37 @@
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<div class="easyui-panel" data-options="title:'文件上传',fit:true">
+<form method="post" enctype="multipart/form-data">
+	<input type="file" name="aaa"/><br/>
+	<input type="text" name="bbb"/><br/>
+	<input type="submit" value="上传"/>
+	<img alt="" src="download.action?id=1" />
+</form>
+</div>
+<script language="javascript">
+$(function(){
+	var form = sys.main.find("form");
+	
+	form.form({
+		url:"upload.action",
+		onSubmit:function(){
+			var ret = form.form("validate");
+			if(ret){
+				$.messager.progress();
+			}
+			return ret;
+		},
+		success:function(data){
+			$.messager.progress('close');
+			var data = eval("("+data+")");
+			if(data.ok){
+				$.messager.alert("错误提示","注册成功","info");
+				sys.win.dialog("close");
+			}else{
+				$.messager.alert("错误提示","注册失败<br/>因为："+data.msg,"error");
+			}
+
+		}
+	});
+	
+});
+</script>

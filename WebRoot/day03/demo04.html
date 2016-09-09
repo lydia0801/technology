@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>DHTML01</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+  	<script type="text/javascript">
+  	
+  	window.onload = function(){
+  	
+  		
+		function getTime(){
+			var d = new Date();
+			var ret = "";
+			var temp;
+			
+			ret += d.getFullYear();
+			ret += "年";
+			
+			temp = d.getMonth()+1;
+			ret += temp<10?"0"+temp:temp;
+			ret += "月";
+			
+			temp = d.getDate();
+			ret += temp<10?"0"+temp:temp;
+			ret += "日 星期";
+			
+			var ws = ["天","一","二","三","四","五","六"];
+			ret += ws[d.getDay()];
+			ret += " ";
+			
+			temp = d.getHours();
+			ret += temp<10?"0"+temp:temp;
+			ret += "时";
+			
+			temp = d.getMinutes();
+			ret += temp<10?"0"+temp:temp;
+			ret += "分";
+			
+			temp = d.getSeconds();
+			ret += temp<10?"0"+temp:temp;
+			ret += "秒";
+			
+			
+			
+			return ret;
+			
+		}
+		
+	  		var e = document.getElementById("div01");
+	  		/**
+	  		console.info(e);
+	  		console.info(e.innerHTML);
+	  		e.innerHTML = getTime();
+	  		**/
+	  		//console.info(e.children[0].innerText);
+	  		//e.innerHTML = getTime();
+	  		e.innerHTML = getTime();
+	  		
+	  		var timer = window.setInterval(function(){
+	  			e.innerHTML = getTime();
+	  		}, 1000);
+	  		
+	  		var btn01 = document.getElementById("btn01");
+	  		
+	  		btn01.onclick = function(){
+	  			//window.clearInterval(timer);
+	  			window.location = "demo03.html"
+	  		}
+	  		
+  		}
+  	</script>
+  </head>
+  
+  <body>
+  	<div id="div01">
+  		<p>asdfsdf</p>
+  	</div>
+  	<input id="btn01" type="button" value="停止"/>
+  </body>
+</html>

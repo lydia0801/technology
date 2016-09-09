@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>二级菜单</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<style type="text/css">
+		#menu , #menu ul { list-style: none; margin: 0; padding: 0;}
+		#menu { border: #006 solid 1px; width: 200px; padding: 1px;}
+		#menu div { background-color: #006; text-align: center; color: #FFF; font-size: 18px; font-weight: bold; line-height: 35px; margin-bottom: 1px;}
+		#menu div:hover { background-color: #F60; cursor: pointer;}
+		#menu ul li { text-align: center; font-size: 14px; border-bottom: #CCC dotted 1px; line-height: 26px;}
+		.s { display: block;}
+		.h { display: none;}
+	</style>
+	<script type="text/javascript">
+/**	
+	function clickit(a){
+		var ul = document.getElementById("sub"+a);
+		if(ul.className=="s"){
+			ul.className = "h";
+		}else{
+			ul.className = "s";
+		}
+	}
+**/	
+	
+		window.onload = function(){
+			var menu = document.getElementById("menu");
+			var titles = menu.getElementsByTagName("div");
+			var currentElement = menu.getElementsByTagName("ul")[0];
+			for(var i in titles){
+				var e = titles[i];
+				e.onclick = function(event){
+					currentElement.className="h";
+					currentElement = event.currentTarget.parentElement.getElementsByTagName("ul")[0];
+					currentElement.className="s";
+				}
+			
+			}
+			
+		}
+		
+		
+		
+	</script>
+  </head>
+  
+  <body>
+<ul id="menu">
+	<li>
+    	<div>菜单一</div>
+    	<ul class="s">
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+	<li>
+    	<div>菜单二</div>
+    	<ul class="h">
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+	<li>
+    	<div>菜单三</div>
+    	<ul class="h">
+        	<li>子菜单一</li>
+        	<li>子菜单二</li>
+        	<li>子菜单三</li>
+        	<li>子菜单四</li>
+        </ul>
+    </li>
+</ul>
+  </body>
+</html>

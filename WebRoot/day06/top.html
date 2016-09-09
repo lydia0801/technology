@@ -1,0 +1,59 @@
+<div class="top"><div class="logo"><div class="right">
+<div class="menu"><a id="my_info" class="easyui-linkbutton" win-title="修改个人资料" win-w="400" win-h="400" data-options="plain:true" href="my_info.html">修改个人资料</a> | <a class="easyui-linkbutton" data-options="plain:true" href="">修改登录密码</a> | <a class="easyui-linkbutton" data-options="plain:true,iconCls:''" href="">安全退出系统</a></div>
+<div class="info">张三，欢迎您进入多媒体网络资源管理系统!</div>
+<div class="time">当前时间：<span class="_showTime">2000年00月00日 星期天 00时00分00秒</span></div>
+</div></div></div>
+
+<script language="javascript">
+$(function(){
+	
+	function getTime(){
+		var d = new Date();
+		var ret = "";
+		var temp;
+		
+		ret += d.getFullYear();
+		ret += "年";
+		
+		temp = d.getMonth()+1;
+		ret += temp<10?"0"+temp:temp;
+		ret += "月";
+		
+		temp = d.getDate();
+		ret += temp<10?"0"+temp:temp;
+		ret += "日 星期";
+		
+		var ws = ["天","一","二","三","四","五","六"];
+		ret += ws[d.getDay()];
+		ret += " ";
+		
+		temp = d.getHours();
+		ret += temp<10?"0"+temp:temp;
+		ret += "时";
+		
+		temp = d.getMinutes();
+		ret += temp<10?"0"+temp:temp;
+		ret += "分";
+		
+		temp = d.getSeconds();
+		ret += temp<10?"0"+temp:temp;
+		ret += "秒";
+		
+		
+		
+		return ret;
+		
+	}
+	
+	var showTime = $("._showTime").html(getTime());
+	
+	window.setInterval(function(){
+		showTime.html(getTime());
+	}, 1000);
+
+	$("#my_info").open();
+	
+
+});
+
+</script>

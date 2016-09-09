@@ -1,0 +1,62 @@
+<div class="easyui-panel" data-options="title:'视频资源',fit:true">
+<div id="sss" style="padding-top:5px; text-align: right;">
+<form>
+<input class="easyui-searchbox" style="width:300px;"  
+        data-options="searcher:sys.search,prompt:'请输入搜索关键字',menu:'#mm'"></input>  
+           
+<div id="mm" style="width:120px">  
+    <div data-options="name:'1'">按资源名称搜索</div>  
+    <div data-options="name:'2'">按上传者搜索</div>  
+</div> 
+</form>
+</div>
+	<table class="_dg"></table>  
+</div>
+<script language="javascript">
+$(function(){
+	var dg = sys.main.find("._dg");
+	
+	sys.search = function(value,name){   
+       dg.datagrid("load",{"type":name,"key":value})
+    }   
+	//console.info(dg);
+	
+	sys.read = function(id){
+		sys.id = id;
+		sys.open({
+			title:"资源",
+			href:"one.html",
+			width:400,
+			height:400,
+			maximizable:true
+		});
+	}
+	
+	dg.datagrid({
+		border:false,
+		toolbar:"#sss",
+	    url:'list.jsp',
+	   // fitColumns:true,
+	    fit:true,
+	    striped:true,
+	    pagination:true,
+	    rownumbers:true,
+	    singleSelect:true,
+	    columns:[[   
+	        {field:'name',title:'资源名称',width:200,formatter:function(v,r,i){
+	        	return "<a href=\"javascript:sys.read("+r.id+")\">"+v+"</a>"
+	        }},   
+	        {field:'uploader',title:'上传者',width:100,align:'center'},    
+	        {field:'uploadDate',title:'上传日期',width:120,align:'center'},   
+	        {field:'level',title:'密级',width:60,align:'center',formatter:function(v,r,i){
+	        	var vs = ["","公开","","内部","保密","绝密"];
+	        	return vs[v];
+	        }},
+	        {field:'sadfsdf',title:'操作',width:100,align:'center',formatter:function(v,r,i){
+	        	return "<a href=\"javascript:sys.read("+r.id+")\">审核</a> <a href=\"javascript:sys.read("+r.id+")\">删除</a>"
+	        }},  
+	    ]]   
+	}); 
+
+});
+</script>

@@ -1,0 +1,51 @@
+<div class="easyui-panel" data-options="title:'用户列表',fit:true">
+	<table class="_dg"></table>  
+</div>
+<script language="javascript">
+$(function(){
+	var dg = sys.main.find("._dg");
+	
+
+	//console.info(dg);
+	
+	sys.modifyUser = function(id){
+		sys.id = id;
+		sys.open({
+			title:"修改用户",
+			href:"user/modify.html",
+			width:400,
+			height:300,
+			buttons:[{
+				handler:function(){
+					sys.win.find("form").submit();
+				},text:"修改"}
+			]
+		});
+	}
+	
+	dg.datagrid({
+		border:false,
+	    url:'userPage.action',
+	   // fitColumns:true,
+	    fit:true,
+	    striped:true,
+	    pagination:true,
+	    rownumbers:true,
+	    singleSelect:true,
+	    columns:[[   
+	        {field:'userName',title:'用户名',width:200},   
+	        {field:'userRealName',title:'真实姓名',width:100,align:'center'},    
+	        {field:'userTime',title:'注册时间',width:120,align:'center'},   
+	        {field:'fileLevelName',title:'访问密级',width:60,align:'center'},
+	        {field:'userRolesName',title:'角色名称',width:60,align:'center'},
+	        {field:'userState',title:'用户状态',width:60,align:'center',formatter:function(v,r,i){
+	        	return v?"正常":"<span style=\"color:red\">锁定</span>";
+	        }},
+	        {field:'sadfsdf',title:'操作',width:100,align:'center',formatter:function(v,r,i){
+	        	return "<a href=\"javascript:sys.modifyUser("+r.userId+")\">修改</a>"
+	        }},  
+	    ]]   
+	}); 
+
+});
+</script>

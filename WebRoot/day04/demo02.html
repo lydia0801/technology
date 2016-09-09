@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>jQuery文档操作</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<style type="text/css">
+
+	</style>
+	<script type="text/javascript" src="script/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var btn = $("#aa");
+			var div = [];
+			for(var i=1;i<10;i++){
+				div[i] = $("<div>"+i+"</div>");
+				btn.before(div[i]);
+			}
+			btn.wrap("<form></form>");
+			btn.unwrap();
+			
+			console.info(div);
+			//$("div:first").empty();
+			
+			var div2 = $("div:first").clone();
+			btn.after(div2);
+			console.info(div2);
+			//innerHTML innerText
+			//div2.html("<a href=\"#\">aaaaaaaaa</a>");
+			//console.info(div2.html());
+			div2.html("<a href=\"#\">aaaaaaaaa</a>");
+			console.info(div2.text());
+			
+			btn.click(function(){
+				//alert($("input[name=userName]").val());
+				$("input[name=userName]").val("10");
+			});
+		});
+	</script>
+  </head>
+  
+  <body>
+  <input name="userName">
+ 	<input id="aa" type="button" value="button"/>
+  </body>
+</html>
